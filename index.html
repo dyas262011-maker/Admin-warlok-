@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulir Admin WaRLOk</title>
+<style>
+body {font-family: Arial; display:flex; justify-content:center; align-items:center; height:100vh; background:#f4f4f4;}
+form {background:white; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2); width:350px;}
+h2{text-align:center;}
+label{display:block; margin-top:15px; font-weight:bold;}
+input, textarea{width:100%; padding:10px; margin-top:5px; border-radius:5px; border:1px solid #ccc;}
+button{width:100%; padding:12px; margin-top:20px; font-size:16px; border:none; border-radius:8px; background:#25D366; color:white; cursor:pointer;}
+button:hover{background:#1ebe5d;}
+</style>
+</head>
+<body>
+
+<form id="adminForm">
+<h2>Formulir Admin WaRLOk</h2>
+
+<label for="nama">Nama:</label>
+<input type="text" id="nama" required>
+
+<label for="alasan">Alasan ingin menjadi admin:</label>
+<textarea id="alasan" required></textarea>
+
+<button type="submit">Salin & Buka WA</button>
+</form>
+
+<script>
+document.getElementById('adminForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const nama = document.getElementById('nama').value.trim();
+  const alasan = document.getElementById('alasan').value.trim();
+
+  // Buat teks ringkas
+  const text = `Halo Admin WaRLOk:\n\nNama: ${nama}\nAlasan ingin menjadi admin: ${alasan}`;
+
+  // Salin ke clipboard
+  navigator.clipboard.writeText(text).then(()=>{
+    alert("Pesan berhasil disalin! Klik OK untuk membuka WhatsApp.");
+    // Buka WhatsApp
+    const adminNumber = '6281324130762'; // ganti dengan nomor admin
+    window.open(`https://wa.me/${adminNumber}`, '_blank');
+  }).catch(()=>{
+    alert("Gagal menyalin pesan. Silakan salin manual.");
+  });
+});
+</script>
+
+</body>
+</html>
